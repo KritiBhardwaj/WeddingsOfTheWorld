@@ -52,7 +52,7 @@ class PledgeDetailSerializer(PledgeSerializer):
         return instance
 
 
-
+#Remove this
 # class PledgeDetailSerializer(PledgeSerializer):
 #     def update(self, instance, validated_data):
 #         instance.amount = validated_data.get('amount', instance.amount)
