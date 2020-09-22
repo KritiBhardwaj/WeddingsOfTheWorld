@@ -62,14 +62,15 @@ class ProjectDetail(APIView):
             serializer.save()
         return Response(serializer.data)
 
+#deleting a project if owner, logged in, and no pledges**
     def delete(self, request, pk):
         project = self.get_object(pk)
-        data = request.@staticmethod
-        serializer = ProjectDetailSerializer(
-
-        )
-
-
+        # pledge = self.get_object(pk)
+        # if pledge:
+        #     return Response(status.HTTP_400_BAD_REQUEST)
+        project.delete()
+        return Response(status=status.HTTP_204_NO_CONTENT)
+   
 
 class PledgeList(APIView):
     permission_classes = [
@@ -130,5 +131,3 @@ class PledgeDetail(APIView):
         return Response(serializer.errors)
 
 
-    def delete(self, request, pk):
-        
