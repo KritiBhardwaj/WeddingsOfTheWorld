@@ -15,7 +15,7 @@ class CustomUserList(APIView):
     def post(self, request):
         serializer = CustomUserSerializer(data=request.data)
         if serializer.is_valid():
-            serlializer.save()
+            serializer.save()
             return Response(serializer.data)
         return Response(serializer.errors)
 

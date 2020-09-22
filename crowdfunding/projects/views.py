@@ -65,11 +65,11 @@ class ProjectDetail(APIView):
 #deleting a project if owner, logged in, and no pledges**
     def delete(self, request, pk):
         project = self.get_object(pk)
-        # pledge = self.get_object(pk)
-        # if pledge:
-        #     return Response(status.HTTP_400_BAD_REQUEST)
-        project.delete()
-        return Response(status=status.HTTP_204_NO_CONTENT)
+        if len(project.pledges.all())>0:
+            return Response(status=status.HTTP_405_METHOD_NOT_ALLOWED)
+        else:
+            project.delete()
+            return Response(status=status.HTTP_204_NO_CONTENT)
    
 
 class PledgeList(APIView):
