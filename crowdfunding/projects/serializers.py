@@ -41,17 +41,25 @@ class ProjectDetailSerializer(ProjectSerializer):
         return instance
 
 
-class PledgeDetailSerializer(PledgeSerializer):
-
+# class PledgeDetailSerializer(PledgeSerializer):
     def update(self, instance, validated_data):
         instance.amount = validated_data.get('amount', instance.amount)
         instance.comment = validated_data.get('comment', instance.comment)
         instance.anonymous = validated_data.get('anonymous', instance.anonymous)
-        instance.supporter = validated_data('supporter', instance.supporter)
+        instance.supporter = validated_data.get('supporter', instance.supporter)
+        instance.project_id = validated_data.get('project_id', instance.project_id)
         instance.save()
         return instance
 
 
 
-
+# class PledgeDetailSerializer(PledgeSerializer):
+#     def update(self, instance, validated_data):
+#         instance.amount = validated_data.get('amount', instance.amount)
+#         instance.comment = validated_data.get('comment', instance.comment)
+#         instance.anonymous = validated_data.get('anonymous', instance.anonymous)
+#         instance.supporter = validated_data.get('supporter', instance.supporter)
+#         instance.project_id =validated_data.get('project_id', instance.project_id)
+#         instance.save()
+#         return instance
 

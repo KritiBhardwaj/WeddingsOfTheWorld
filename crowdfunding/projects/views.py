@@ -5,7 +5,7 @@ from .models import Project
 from .serializers import ProjectSerializer
 from django.http import Http404 
 from rest_framework import status, permissions
-from .serializers import PledgeSerializer, ProjectDetailSerializer, ProjectSerializer
+from .serializers import PledgeSerializer, ProjectDetailSerializer, ProjectSerializer, PledgeDetailSerializer
 from .models import Pledge
 from .permissions import IsOwnerOrReadOnly, IsSupporterOrReadOnly
 
@@ -61,6 +61,13 @@ class ProjectDetail(APIView):
         if serializer.is_valid():
             serializer.save()
         return Response(serializer.data)
+
+    def delete(self, request, pk):
+        project = self.get_object(pk)
+        data = request.@staticmethod
+        serializer = ProjectDetailSerializer(
+
+        )
 
 
 
@@ -119,6 +126,9 @@ class PledgeDetail(APIView):
         )
         if serializer.is_valid():
             serializer.save()
-        return Response(serializer.data)
+            return Response(serializer.data)
+        return Response(serializer.errors)
 
 
+    def delete(self, request, pk):
+        
