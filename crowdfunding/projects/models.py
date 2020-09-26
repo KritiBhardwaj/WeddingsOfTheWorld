@@ -11,6 +11,7 @@ class Project(models.Model):
     owner = models.ForeignKey(
         get_user_model(),
         on_delete=models.CASCADE,
+        #.PROTECT to prevent projects that have pledges from being deleted
         related_name='owner_projects'
     )
 

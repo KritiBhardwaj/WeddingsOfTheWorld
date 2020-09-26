@@ -130,4 +130,10 @@ class PledgeDetail(APIView):
             return Response(serializer.data)
         return Response(serializer.errors)
 
+    def delete(self, request, pk):
+        pledge = self.get_object(pk)
+        pledge.delete()
+        return Response(status=status.HTTP_204_NO_CONTENT)
+
+
 
