@@ -8,6 +8,6 @@ class HomeView(APIView):
         {
             "users/": ["GET","POST","DELETE","UPDATE"], 
             "project/": ["GET","POST","DELETE","UPDATE"],
-            "pledges/": ["GET","POST","DELETE","UPDATE"]
+            "pledges/": ["GET","POST","DELETE","UPDATE"],
         }
         )
