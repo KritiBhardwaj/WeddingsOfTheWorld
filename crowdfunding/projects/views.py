@@ -11,6 +11,10 @@ from .permissions import IsOwnerOrReadOnly, IsSupporterOrReadOnly
 
 
 class ProjectList(APIView):
+    permission_classes = [
+        permissions.IsAuthenticatedOrReadOnly, 
+        IsOwnerOrReadOnly
+    ]
 
     def get(self, request):
         projects = Project.objects.all()
