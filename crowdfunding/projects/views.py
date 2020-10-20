@@ -64,7 +64,7 @@ class ProjectDetail(APIView):
         )
         if serializer.is_valid():
             serializer.save()
-        return Response(serializer.data)
+            return Response(serializer.data)
 
 #deleting a project if owner, logged in, and no pledges**
     def delete(self, request, pk):
