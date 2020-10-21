@@ -4,7 +4,7 @@ from .models import Pledge
 
 class PledgeSerializer(serializers.Serializer):
     id = serializers.ReadOnlyField()
-    amount = serializers.IntegerField()
+    image = serializers.URLField()
     comment = serializers.CharField(max_length=200)
     anonymous = serializers.BooleanField()
     supporter = serializers.ReadOnlyField(source='supporter.id')
@@ -43,7 +43,7 @@ class ProjectDetailSerializer(ProjectSerializer):
 
 class PledgeDetailSerializer(PledgeSerializer):
     def update(self, instance, validated_data):
-        instance.amount = validated_data.get('amount', instance.amount)
+        instance.image = validated_data.get('image', instance.image)
         instance.comment = validated_data.get('comment', instance.comment)
         instance.anonymous = validated_data.get('anonymous', instance.anonymous)
         instance.supporter = validated_data.get('supporter', instance.supporter)
