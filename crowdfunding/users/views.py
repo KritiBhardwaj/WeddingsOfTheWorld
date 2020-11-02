@@ -60,19 +60,6 @@ class CustomUserDetails(APIView):
         return Response(status=status.HTTP_204_NO_CONTENT)
 
 
-class CustomAuthToken(ObtainAuthToken):
-    def post(self, request, *args, **kwargs):
-        serialiser = self.serialiser_class(data=request.data, context={'request': request})
-        serialiser.is_valid(raise_exception=True)
-        user = serializer.validated_date['user']
-        token, created = Token.objects.get_or_create(user=user)
-        return Response({
-            'token': token.key, 
-            'user_id': user.pk,
-            'user_first_name': user.first_name,
-            'user_last_name': user.last_name
-        })
-        
 
 
 
