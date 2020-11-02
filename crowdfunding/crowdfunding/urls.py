@@ -17,7 +17,6 @@ from django.contrib import admin
 from django.urls import path, include
 from rest_framework.authtoken.views import obtain_auth_token
 from .views import HomeView
-from users.views import CustomAuthToken
 
 urlpatterns = [
     path('admin/', admin.site.urls),
