@@ -61,7 +61,7 @@ class CustomUserDetails(APIView):
 
 
 class CustomAuthToken(ObtainAuthToken):
-    def post(slef, request, *args, **kwargs):
+    def post(self, request, *args, **kwargs):
         serialiser = self.serialiser_class(data=request.data, context={'request': request})
         serialiser.is_valid(raise_exception=True)
         user = serializer.validated_date['user']
